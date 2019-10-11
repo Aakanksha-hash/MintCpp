@@ -1,6 +1,12 @@
 #include <iostream>
+
 #include<math.h>
 typedef std::string Mint;
+=======
+using namespace std;
+typedef string Mint;
+
+
 Mint add(Mint a, Mint b)
 {
 	std::string ans="";
@@ -81,11 +87,26 @@ Mint sub(Mint a, Mint b)
 	return std::string(ans.rbegin(), ans.rend());
 }
 
+Mint operator + (Mint a, Mint b) {
+   return add(a, b);
+}
+
+Mint operator - (Mint a, Mint b) {
+   return sub(a, b);
+}
+
 int main()
 {
+
 	Mint str ;
     Mint str1;
     std::cin>>str>>str1;
     Mint Res=mini(str,str1);
 	std::cout <<Res<< '\n';
 }
+
+	Mint str = "98", s = "22";
+	cout << str + s << '\n';
+	cout << str - s << '\n';
+}
+
