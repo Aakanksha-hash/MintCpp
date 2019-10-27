@@ -1,15 +1,20 @@
 #include <iostream>
+
+#include<math.h>
+typedef std::string Mint;
+=======
 using namespace std;
 typedef string Mint;
 
+
 Mint add(Mint a, Mint b)
 {
-	string ans="";
+	std::string ans="";
 	int len1 = a.length(), len2 = b.length(), sum=0, carry=0, j=len1-1;
 	if(len1 < len2)
 	{
 		a.swap(b);
-		swap(len1, len2);
+		std::swap(len1, len2);
 	}
 	while(len1--, len2--)
 	{
@@ -26,17 +31,37 @@ Mint add(Mint a, Mint b)
 	 }
 	 if(carry)
 	 ans+=carry+48;
-	return string(ans.rbegin(), ans.rend());
+	return std::string(ans.rbegin(), ans.rend());
+}
+Mint mini(Mint a,Mint b)
+{
+	Mint ans="";
+	
+	for(int i = 0; i < a.length(); ++i)
+	{
+    if ((a[i] - '0') < (b[i] - '0'))
+    { 
+        ans=a;
+    }
+    else if((a[i]-'0') =='0' || (b[i]-'0')=='0')
+    {
+    	continue;
+	}
+    else
+    ans=b;
+    
+    }
+	return ans;
 }
 
-Mint sub(string a, string b)
+Mint sub(Mint a, Mint b)
 {
-	string ans="";
+	std::string ans="";
 	int len1 = a.length(), len2 = b.length(), sum=0, carry=0, j=len1-1, neg=0;
 	if(len1 < len2)
 	{
 		a.swap(b);
-		swap(len1, len2);
+		std::swap(len1, len2);
 		neg=1;
 	}
 	
@@ -59,7 +84,7 @@ Mint sub(string a, string b)
 	 }
 	 if(neg)
 		 ans+='-';
-	return string(ans.rbegin(), ans.rend());
+	return std::string(ans.rbegin(), ans.rend());
 }
 
 Mint operator + (Mint a, Mint b) {
@@ -72,7 +97,16 @@ Mint operator - (Mint a, Mint b) {
 
 int main()
 {
+
+	Mint str ;
+    Mint str1;
+    std::cin>>str>>str1;
+    Mint Res=mini(str,str1);
+	std::cout <<Res<< '\n';
+}
+
 	Mint str = "98", s = "22";
 	cout << str + s << '\n';
 	cout << str - s << '\n';
 }
+
